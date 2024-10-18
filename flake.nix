@@ -37,7 +37,7 @@
 
             src = ./.;
 
-            cargoHash = "sha256-/3nIvDueiU6WelTlgzNYWGhToDUtf3BfUCbWkJhWAaw=";
+            cargoHash = "sha256-A2kygxlEroZkuEWdsbmskz4+ZAY270/dMn0Mj/z251E=";
 
             nativeBuildInputs = [ pkg-config ];
 
