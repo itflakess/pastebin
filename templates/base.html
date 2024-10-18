@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="wastebin {{ meta.version }}"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>{{ meta.title }}</title>
+    <link rel="stylesheet" href="{{ base_path.join(meta.highlight.style.name) }}">
+    {% block head %}{% endblock %}
+  </head>
+  <body>
+    <div id="main-container">
+      <header>
+        <nav>
+            {% block nav %}{% endblock %}
+        </nav>
+      </header>
+      <content>
+        {% block content %}{% endblock %}
+      </content>
+    </div>
+  </body>
+</html>

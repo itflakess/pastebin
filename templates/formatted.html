@@ -1,0 +1,37 @@
+{% extends "paste.html" %}
+
+{% block content %}
+  <div id="overlay">
+    <div id="overlay-content">
+      <table>
+        <tr>
+          <td><kbd>n</kbd></td>
+          <td>Go home</td>
+        </tr>
+        <tr>
+          <td><kbd>p</kbd></td>
+          <td>Go here</td>
+        </tr>
+        <tr>
+          <td><kbd>y</kbd></td>
+          <td>Copy URL</td>
+        </tr>
+        <tr>
+          <td><kbd>d</kbd></td>
+          <td>Download</td>
+        </tr>
+        <tr>
+          <td><kbd>q</kbd></td>
+          <td>Show QR code</td>
+        </tr>
+        <tr>
+          <td><kbd>?</kbd></td>
+          <td>Toggle help</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div id="code">
+    <pre class="code">{{ html|safe }}</pre>
+  </div>
+{% endblock %}

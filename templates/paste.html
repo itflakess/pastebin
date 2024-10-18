@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block head %}
+<script>
+  document.addEventListener('keydown', onKey);
+
+  function onKey(e) {
+    if (e.key == 'n') {
+      window.location.href = '{{ base_path.path() }}';
+    }
+    else if (e.key == 'r') {
+      window.location.href = '{{ base_path.join(id) }}?fmt=raw';
+    }
+    else if (e.key == 'y') {
+      navigator.clipboard.writeText(window.location.href);
+    }
+    else if (e.key == 'd') {
+      window.location.href = '{{ base_path.join(id) }}?dl={{ ext }}';
+    }
+    else if (e.key == 'q') {
+      window.location.href = '{{ base_path.join(id) }}?fmt=qr';
+    }
+    else if (e.key == 'p') {
+      window.location.href = '{{ base_path.join(id) }}';
+    }
+    else if (e.key == '?') {
+      var overlay = document.getElementById("overlay");
+
+      overlay.style.display = overlay.style.display != "block" ? "block" : "none";
+      overlay.onclick = function() {
+        if (overlay.style.display == "block") {
+          overlay.style.display = "none";
+        }
+      };
+    }
+
+    if (e.keyCode == 27) {
+      var overlay = document.getElementById("overlay");
+
+      if (overlay.style.display == "block") {
+        overlay.style.display = "none";
+      }
+    }
+  }
+</script>
+{% endblock %}
+
+{% block nav %}
+  {% if can_delete %}
+    <a href="{{ base_path.join("delete/") }}{{ id }}"><button class="button">delete</button></a>
+  {% endif %}
+    <a href="{{ base_path.join(id) }}?dl={{ ext }}"><button class="button">download</button></a>
+    <a href="{{ base_path.join(id) }}?fmt=raw"><button class="button">raw</button></a>
+{% endblock %}

@@ -1,0 +1,261 @@
+@import url("light.css") (prefers-color-scheme: light);
+@import url("dark.css") (prefers-color-scheme: dark);
+:root {
+  --text-color: #555;
+  --bg-color: white;
+  --transparent: #e0e0e0;
+  --a-text-color: rgba(67, 67, 67, 0.65);
+  --a-bg-color: #f1f1f1;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: #bdbfc2;
+    --bg-color: #1b1b1b;
+    --transparent: rgba(255, 255, 255, 0.15);
+    --small-text-color: rgba(255, 255, 255, 0.45);
+    --a-text-color: rgba(163, 163, 163, 0.65);
+    --a-bg-color: #232323;
+  }
+}
+body,
+textarea,
+select,
+input {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  line-height: 1.6;
+  font-size: 14px;
+  font-family: ui-sans-serif, system-ui, sans-serif, Apple Color Emoji,
+    Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+}
+
+#main-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+/* 针对 WebKit 浏览器 */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* 背景颜色无 */
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--transparent); /* 滑块颜色 */
+  border-radius: 10px; /* 圆角 */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--transparent); /* 悬停时的颜色 */
+}
+
+/* Firefox */
+scrollbar-width: thin;
+scrollbar-color: var(--transparent) transparent; /* 滑块和轨道颜色 */
+
+content {
+  flex-grow: 1;
+  padding: 1em 2em 1em 2em;
+}
+
+#nav-title {
+  margin-right: auto;
+}
+
+button {
+  font-size: 1.125rem;
+  margin: 10px 0;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+select {
+  width: 100%;
+  border-radius: 6px;
+  outline: none;
+  font-size: medium;
+  border: 1px solid var(--transparent);
+  padding: 4px;
+}
+
+select > option {
+  color: var(--text-color);
+  border-radius: 4px;
+  margin: 5px 0;
+}
+select > option:checked {
+  background-color: var(--transparent) !important;
+  color: var(--text-color);
+  border-radius: 4px;
+}
+select > option:hover {
+  background-color: var(--transparent);
+  color: var(--text-color);
+}
+
+input {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 1.0625rem;
+  padding: 0.25rem;
+  background-color: var(--a-bg-color);
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid var(--transparent);
+  box-sizing: border-box;
+  outline: none;
+}
+
+a,
+a:visited,
+a:hover {
+  text-decoration: none;
+}
+
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+#overlay-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: white;
+  transform: translate(-50%, -50%);
+  font-size: 1.125rem;
+}
+
+#overlay-content table {
+  border-spacing: 1rem;
+}
+
+.container {
+  margin: 1.5rem auto;
+  width: 90%;
+  max-width: 100vh;
+}
+
+.content {
+  grid-area: content;
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+
+.content > textarea {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 20vh;
+  border: none;
+  line-height: 1.6rem;
+  font-size: 1rem;
+  resize: none;
+  padding: 0;
+  margin: 0;
+}
+
+.content > textarea:focus {
+  outline: none !important;
+}
+
+.controls {
+  grid-row: 1/2;
+}
+
+.expiration-list,
+.paste-button {
+  margin: 10px 0;
+}
+
+.password {
+  margin: 20px 0 10px 0;
+}
+
+.extension-filter > input {
+  width: 100%;
+}
+
+.password > input {
+  width: 100%;
+}
+
+.link {
+  color: var(--a-text-color);
+}
+
+.decrypt-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 0.5em;
+}
+
+.button {
+  padding: 10px;
+  border: none;
+  color: var(--text-color);
+  background-color: var(--a-bg-color);
+  border-radius: 6px;
+  font-size: inherit;
+  border: 1px solid var(--transparent);
+  margin-right: 10px;
+}
+#code {
+  overflow-x: auto;
+}
+
+td.line-number {
+  user-select: none;
+}
+
+.line-number {
+  padding-right: 1em;
+}
+
+.line-number > a,
+.line-number > a:visited {
+  color: #abb0b6;
+}
+
+.line-number > a:hover,
+.line-number > a:focus {
+  color: #fa6e32;
+}
+
+.line {
+  word-wrap: normal;
+  white-space: pre;
+}
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.text-center {
+  text-align: center;
+}
+
